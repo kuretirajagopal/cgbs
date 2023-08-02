@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>SignUp</title>
+ <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+ <div class="container">
+ <div id="login">
+ <form action="adduser.php" method="post" onsubmit="return validate()">
+ <fieldset class="clearfix">
+ <p><span class="fontawesome-user"></span><input type="text" placeholder="name"
+name="uname" id="na" required></p>
+ <div id="nameErr" style="color:red"></div>
+ <p><span class="fontawesome-user"></span><input type="text" placeholder="email"
+name="email" id="mail" required></p>
+<div id="mailErr" style="color:red"></div>
+<p><span class="fontawesome-user"></span><input type="text" placeholder="mobile"
+name="mobile" id="phnum" required></p>
+<div id="phnumErr" style="color:red"></div>
+<p><span class="fontawesome-user"></span><input type="password"
+placeholder="password" name="password" required></p>
+<p><input type="submit" value="Sign Up"></p>
+ </fieldset> </form>
+<p>Already a Registered User? <a href=login.html>Sign In</a><span class="fontawesomearrow-right"></span></p>
+</div> <!-- end login -->
+</div>
+<script>
+ function validate(){
+ var name = document.getElementById("na").value;
+ var mail = document.getElementById("mail").value;
+ var phnum = document.getElementById("phnum").value;
+ var ret = true;
+ if (name == '' || name.length < 4) {
+ document.getElementById("nameErr").innerHTML = "Enter Valid Name";
+ ret = false;
+ } else {
+ document.getElementById("nameErr").innerHTML = "";
+ }
+ var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zAZ0-9-]+)*$/;
+if (mail == '' || !(mail.match(mailformat))) {
+ document.getElementById("mailErr").innerHTML = "Enter Valid Mail Address";
+ ret = false;
+ } else {
+ document.getElementById("mailErr").innerHTML = "";
+ }
+var phoneno = /^\d{10}$/;
+ if (phnum == '' || !(phnum.match(phoneno))) {
+ document.getElementById("phnumErr").innerHTML = "Enter Valid Phone Number";
+ ret = false;
+ } else {
+ document.getElementById("phnumErr").innerHTML = "";
+ }
+return ret;
+ }
+</script>
+ </body>
+</html>
